@@ -16,8 +16,10 @@ class ViewController: UIViewController {
     }
 
     func createCalendar() {
+        view.backgroundColor = .systemPink
         let calendarView = UICalendarView()
-        
+        calendarView.layer.cornerRadius = 12
+        calendarView.backgroundColor = .systemBackground
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.calendar = .current
         calendarView.locale = .current
@@ -37,6 +39,14 @@ extension ViewController: UICalendarViewDelegate {
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         return nil
     }
+}
+
+extension ViewController: UICalendarSelectionSingleDateDelegate {
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        print("selected components: \(dateComponents)")
+    }
+    
+    
 }
 
 
